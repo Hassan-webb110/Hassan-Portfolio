@@ -7,12 +7,7 @@ const informationSummaryData = [
     id: 1,
     title: "Experience",
     description: "6 mo",
-  },
-  {
-    id: 2,
-    title: "Projects Completed",
-    description: "20+",
-  },
+  }
 ];
 
 const Introduction = () => {
