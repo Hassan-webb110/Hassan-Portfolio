@@ -1,51 +1,37 @@
-import person from "../../assets/images/person.png";
+import person from "../../assets/images/person.jpg";
 import "./introduction.css";
 import InformationSummary from "./InformationSummary";
 
-// Information summary data
 const informationSummaryData = [
   {
     id: 1,
     title: "Experience",
-    description: "15 Y.",
+    description: "6 mo",
   },
   {
     id: 2,
     title: "Projects Completed",
-    description: "250+",
-  },
-  {
-    id: 3,
-    title: "Happy Clients",
-    description: "58",
+    description: "20+",
   },
 ];
 
 const Introduction = () => {
   return (
     <div
-      className="flex max-lg:flex-col-reverse sm:justify-between pt-10 lg:pt-31.5 lg:mb-27.5 max-xl:gap-2 p-2 max-xxl:px-4"
+      className="flex max-lg:flex-col-reverse sm:justify-between pt-10 lg:pt-31.5 max-xl:gap-2 p-2 max-xxl:px-4"
       id="introduction"
     >
       <div className="w-full flex flex-col justify-between max-lg:text-center">
         <div className="pt-13 me-31.5 w-full lg:w-auto transition-all duration-500">
           <p className="text-3xl xxs:text-4xl sm:max-xl:text-5xl xl:text-6xl font-semibold w-full">
             Hello, I’m
-            <span className="text-nowrap shrink-0 inline-block w-full">
-              Hassan Ameer
-            </span>
+              <span className="text-nowrap shrink-0 inline-block w-full">
+                Hassan Ameer
+              </span>
           </p>
           <p className="text-xs xxs:text-lg lg:text-[18px] my-6">
-            I'm a Freelance <span className="bg-highlight">Frontend Website Developer</span>{" "}from
-            Pakistan specializing in React, Tailwind CSS, and modern web design. I create websites that are not only visually stunning but also fast, responsive, and user-friendly
-          </p>
-          <p className="text-center lg:text-start">
-            <a
-              className="btn-primary btn btn-xs xxs:btn-lg text-white"
-              href="mailto:example@gmail.com"
-            >
-              Say Hello!
-            </a>
+            <strong className="inline-block text-blue-600 text-[20px] sm:text-2xl font-semibold tracking-wide uppercase">Front-End Developer</strong>
+            <span className="block mt-3">I’m a dedicated and creative Front-End Developer with over seven months of internship experience in designing and developing responsive, interactive, and user-focused web applications. My journey in web development began with a curiosity for how design and functionality come together to create digital experiences that engage users. Over time, I’ve developed a strong technical foundation and a deep passion for building clean, efficient, and visually appealing interfaces.</span>
           </p>
         </div>
         <div className="mx-auto lg:mx-0 relative">

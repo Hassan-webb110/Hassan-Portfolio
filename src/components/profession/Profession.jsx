@@ -2,12 +2,6 @@ import Roles from "./Roles";
 
 const rolesData = [
   {
-    id: 1,
-    title: "User Experience (UX)",
-    description:
-      "I design intuitive and enjoyable experiences by understanding user needs, conducting research, and creating wireframes and prototypes that enhance usability.",
-  },
-  {
     id: 2,
     title: "User Interface (UI)",
     description:
@@ -17,7 +11,7 @@ const rolesData = [
     id: 3,
     title: "Web Development",
     description:
-      "I build responsive and high-performance web applications using modern technologies, ensuring accessibility, scalability, and maintainability.",
+      "I specialize in frontend development — building responsive, accessible, and high-performance user interfaces using modern frameworks and best practices. I focus on maintainable code, fast load times, and great UX.",
   },
 ];
 
@@ -41,12 +35,6 @@ const Profession = () => {
             users.
           </p>
         </div>
-        <a
-          href="#!"
-          className="mt-5 md:mt-12.5 btn btn-primary text-white w-fit md:py-3 md:px-6 text-[12px] sm:text-[16px] font-semibold max-md:mx-auto max-md:mb-5"
-        >
-          Say Hello!
-        </a>
       </div>
       <div className="">
         {rolesData.map((role, index) => (

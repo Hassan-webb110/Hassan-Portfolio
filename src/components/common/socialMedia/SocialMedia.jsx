@@ -1,6 +1,4 @@
 import {
-  faBehance,
-  faDribbble,
   faFacebookF,
   faInstagram,
   faLinkedin,
@@ -8,11 +6,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const socialIcons = [
-  { icon: faFacebookF, link: "#!" },
-  { icon: faDribbble, link: "#!" },
-  { icon: faInstagram, link: "#!" },
-  { icon: faLinkedin, link: "#!" },
-  { icon: faBehance, link: "#!" },
+  { icon: faLinkedin, link: "https://www.linkedin.com/in/hassanameer-110313-/" },
+  { icon: 'x', link: "Check out Rana “Hasni” (@itx_hasnii_): https://x.com/itx_hasnii_?s=08" },
+  { icon: faInstagram, link: "https://www.instagram.com/itx_hasnii_/" },
+  { icon: faFacebookF, link: "https://www.facebook.com/hassanameer.rana" },
 ];
 
 const SocialMedia = () => {
@@ -21,11 +18,17 @@ const SocialMedia = () => {
       href={item.link}
       className={`text-picto-primary hover:bg-picto-primary p-2 pt-3 xs:p-2.5 xs:pt-3.75 sm:pt-4 md:pt-5 sm:p-3 md:p-3.75 hover:text-white rounded-md`}
       key={index}
+      target="_blank"
+      rel="noreferrer noopener"
     >
-      <FontAwesomeIcon
-        icon={item.icon}
-        className={`text-xl w-4.5 aspect-square`}
-      />
+      {typeof item.icon === "string" && item.icon === "x" ? (
+        <span className={`text-xl w-4.5 aspect-square font-bold`}>X</span>
+      ) : (
+        <FontAwesomeIcon
+          icon={item.icon}
+          className={`text-xl w-4.5 aspect-square`}
+        />
+      )}
     </a>
   ));
 };

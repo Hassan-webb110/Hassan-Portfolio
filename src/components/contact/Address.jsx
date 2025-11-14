@@ -28,7 +28,17 @@ const Address = ({ item }) => {
           {item?.title}:
         </p>
         <p className="text-[14px] md:text-[16px] text-[#132238] font-medium">
-          {item?.description}
+          {item?.title === "My Email" ? (
+            <a href={`mailto:${item?.description}`} className="underline">
+              {item?.description}
+            </a>
+          ) : item?.title === "Call Me Now" ? (
+            <a href={`tel:${item?.description.replace(/\s+/g, "")}`} className="underline">
+              {item?.description}
+            </a>
+          ) : (
+            item?.description
+          )}
         </p>
       </div>
     </div>

@@ -10,18 +10,18 @@ import SocialMedia from "../common/socialMedia/SocialMedia";
 const addressData = [
   {
     icon: faLocationDot,
-    title: "Address",
-    description: "New Mexico, 31134",
+    title: "Location",
+    description: "Lahore, Punjab, Pakistan",
   },
   {
     icon: faEnvelope,
     title: "My Email",
-    description: "mymail@mail.com",
+    description: "rhassanameer@gmail.com",
   },
   {
     icon: faPhone,
     title: "Call Me Now",
-    description: "00-123 00000",
+    description: "+92 322 4801731",
   },
 ];
 
