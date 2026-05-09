@@ -26,7 +26,7 @@ const Introduction = () => {
           </p>
           <p className="text-xs xxs:text-lg lg:text-[18px] my-6">
             <strong className="inline-block text-blue-600 text-[20px] sm:text-2xl font-semibold tracking-wide uppercase">Front-End Developer</strong>
-            <span className="block mt-3">I’m a dedicated and creative Front-End Developer with over seven months of internship experience in designing and developing responsive, interactive, and user-focused web applications. My journey in web development began with a curiosity for how design and functionality come together to create digital experiences that engage users. Over time, I’ve developed a strong technical foundation and a deep passion for building clean, efficient, and visually appealing interfaces.</span>
+            <span className="block mt-3">I’m a dedicated and creative Front-End Developer with six months of internship experience in designing and developing responsive, interactive, and user-focused web applications. My journey in web development began with a curiosity for how design and functionality come together to create digital experiences that engage users. Over time, I’ve developed a strong technical foundation and a deep passion for building clean, efficient, and visually appealing interfaces.</span>
           </p>
         </div>
         <div className="mx-auto lg:mx-0 relative">

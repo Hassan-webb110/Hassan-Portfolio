@@ -15,7 +15,58 @@ const telegramSVG = (
 const commonClass =
   "input input-lg border-0 border-b-2 focus:outline-none focus:placeholder:text-picto-primary placeholder:text-[15px] md:placeholder:text-lg focus:border-picto-primary border-[#E6E8EB] w-full rounded-none px-0";
 
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+
 const Form = () => {
+  const formRef = useRef(null);
+  const [sending, setSending] = useState(false);
+  const [statusMsg, setStatusMsg] = useState(null);
+
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatusMsg(null);
+
+    const form = formRef.current;
+    const formData = new FormData(form);
+    const templateParams = Object.fromEntries(formData.entries());
+
+    // If EmailJS is configured, send via EmailJS
+    if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
+      try {
+        setSending(true);
+        await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+        setStatusMsg({ type: "success", text: "Message sent — I will reply soon." });
+        form.reset();
+      } catch (err) {
+        console.error("EmailJS error:", err);
+        setStatusMsg({ type: "error", text: "Failed to send message. Try again later." });
+      } finally {
+        setSending(false);
+      }
+      return;
+    }
+
+    // Fallback: open mail client with prefilled mailto (requires user to send manually)
+    const name = templateParams.name || "";
+    const email = templateParams.email || "";
+    const location = templateParams.location || "";
+    const budget = templateParams.budget || "";
+    const subject = templateParams.subject || "Contact from portfolio";
+    const message = templateParams.message || "";
+    const to = "rhassanameer@gmail.com"; // recipient provided by user
+
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nLocation: ${location}\nBudget: ${budget}\n\nMessage:\n${message}`
+    );
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = mailto;
+  };
+
   return (
     <div>
       <p className="text-[12px] xs:text-[14px] max-lg:text-center sm:text-lg font-normal text-soft-dark">
@@ -23,53 +74,31 @@ const Form = () => {
         opportunities.
       </p>
       <div className="mx-2">
-        <form className="flex flex-col gap-4 mt-4">
-          <input
-            type="text"
-            placeholder="Name*"
-            className={`${commonClass}`}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email*"
-            className={`${commonClass}`}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Location*"
-            className={`${commonClass}`}
-            required
-          />
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
+          <input name="name" type="text" placeholder="Name*" className={`${commonClass}`} required />
+          <input name="email" type="email" placeholder="Email*" className={`${commonClass}`} required />
+          <input name="location" type="text" placeholder="Location*" className={`${commonClass}`} required />
 
           <div className="flex max-xs:flex-col max-xs:gap-4">
-            <input
-              type="text"
-              placeholder="Budget*"
-              className={`${commonClass} xs:w-[50%] me-5`}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Subject*"
-              className={`${commonClass}`}
-              required
-            />
+            <input name="budget" type="text" placeholder="Budget*" className={`${commonClass} xs:w-[50%] me-5`} required />
+            <input name="subject" type="text" placeholder="Subject*" className={`${commonClass}`} required />
           </div>
 
-          <input
-            type="text"
-            placeholder="Message*"
-            className={`${commonClass}`}
-            required
-          />
+          <textarea name="message" placeholder="Message*" className={`${commonClass} h-28`} required />
+
           <button
             type="submit"
+            disabled={sending}
             className="btn gap-3 max-lg:mx-auto btn-primary rounded-sm mt-5 text-[13px] md:text-[16px] w-fit font-semibold lg:mt-12.5 p-2 md:px-4"
           >
-            Submit {telegramSVG}
+            {sending ? "Sending..." : "Submit"} {telegramSVG}
           </button>
+
+          {statusMsg && (
+            <p className={`mt-3 ${statusMsg.type === "error" ? "text-red-500" : "text-green-600"}`}>
+              {statusMsg.text}
+            </p>
+          )}
         </form>
       </div>
     </div>

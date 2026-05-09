@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
-import logo from "../../../assets/logo.png";
 
 const navItems = [
   { id: 1, name: "Home", url: "introduction" },
@@ -90,7 +89,6 @@ const NavBar = () => {
             duration={900}
             className="flex items-center border-0 lg:max-xxl:ps-5"
           >
-            <img src={logo} alt="Logo" className="h-8 sm:h-10 my-auto ms-[12px]" />
             <p className="text-2xl sm:text-[32px] my-auto ms-3 font-semibold hidden lg:block">
               Portfolio
             </p>
