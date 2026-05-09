@@ -51,5 +51,3 @@ const Introduction = () => {
 };
 
 export default Introduction;
-Hassan-webb110  
-Hasani@150
