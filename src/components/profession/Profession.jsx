@@ -2,12 +2,6 @@ import Roles from "./Roles";
 
 const rolesData = [
   {
-    id: 2,
-    title: "User Interface (UI)",
-    description:
-      "I craft visually appealing and consistent interfaces, focusing on layout, color, and typography to ensure a seamless and engaging user journey.",
-  },
-  {
     id: 3,
     title: "Web Development",
     description:
